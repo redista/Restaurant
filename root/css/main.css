@@ -1,0 +1,29 @@
+body {
+    font-size: 100%;
+}
+#nav-name, .nav-link {
+    color: black;
+    font-family: "Roboto", sans-serif;
+}
+#nav-name {
+    font-size: 2em;
+    font-weight: bold;
+}
+.nav-link {
+    font-size: 1.5rem;
+    margin-right: 2em;
+}
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+#home-img {
+    width: 100%;
+}
