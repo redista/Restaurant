@@ -37,7 +37,7 @@ window.onload = function() {
             let desc = document.createElement("p");
             let btn = document.createElement("input");
             btn.setAttribute("type", "button");
-            btn.classList.add("itembtn", "add");
+            btn.classList.add("itembtn");
             btn.setAttribute("id", item.name);
 
             // Append data to dish
@@ -57,7 +57,9 @@ window.onload = function() {
         menu_loc.appendChild(section);
     }
 
-    console.log("h")
+    $('input.itembtn').click(function() {
+        AddToCart(this.id);
+    });
     document.getElementById("menu").addEventListener(onclick, function(e) {
         if (e.target && e.className == "add") {
             AddToCart();
