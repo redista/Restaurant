@@ -1,0 +1,32 @@
+{
+    "antipasti":[
+        {
+            "name": "Caprese",
+            "price": "6.00",
+            "description": "Fresh vine ripened tomato slices with mozzarella cheese and basil leaves, doused with balsamic vinegar & olive oil",
+            "vegetarian": true,
+            "vegan": false
+
+        },
+        {
+            "name": "Burschetta",
+            "price": "6.00",
+            "description": "Grilled bread rubbed with garlic and topped with olive oil and salt. Includes toppings of tomato",
+            "vegetarian": true,
+            "vegan": true
+        },
+        {
+            "name": "Caesar Salad",
+            "price": "8.50",
+            "description": "Crispy grean leaves, panchetta & croutons tossed in our homemade dressing topped with fresh parmesan. roasted.",
+            "vegetarian": false,
+            "vegan": false
+        },
+        {
+            "name": "Calamari Fresca",
+            "price": "6.00",
+            "description": "Fresh pan-fried calamari,fresh garlic lightly tossed in herbs.",
+            "vegetarian": false
+        }
+    ]
+}

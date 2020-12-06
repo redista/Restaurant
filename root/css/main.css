@@ -27,3 +27,36 @@ body {
 #home-img {
     width: 100%;
 }
+
+.menu-category {
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: underline;
+    margin: 1.5em 0.5em 1.5em 0.5em;
+}
+
+.menu-item {
+    margin: 1.5em 0em 1.5em 0em;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#contact-form {
+    width: 60%;
+    margin: auto;
+}
+
+/*
+// PRICE FLOATING RIGHT OF DISH NAME
+// NOT FINISHED
+.price {
+    display: inline-block;
+    text-align: right;
+}
+
+.item-name {
+    display: inline-block;
+}
+*/
