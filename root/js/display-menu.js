@@ -30,14 +30,19 @@ window.onload = function() {
             wrapper.classList.add("menu-item", "col-sm-6");
 
             // Create elements for dish info
+
             let name = document.createElement("h3");
             name.classList.add("item-name");
+
             let price = document.createElement("p");
             price.classList.add("price");
+
             let desc = document.createElement("p");
+
             let btn = document.createElement("input");
             btn.setAttribute("type", "button");
-            btn.classList.add("itembtn");
+            btn.setAttribute("value", "Add to cart");
+            btn.classList.add("itembtn", "add");
             btn.setAttribute("id", item.name);
 
             // Append data to dish
@@ -60,10 +65,6 @@ window.onload = function() {
     $('input.itembtn').click(function() {
         AddToCart(this.id);
     });
-    document.getElementById("menu").addEventListener(onclick, function(e) {
-        if (e.target && e.className == "add") {
-            AddToCart();
-        }}, false);
 }
 
 function testing() {
