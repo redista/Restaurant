@@ -94,3 +94,7 @@ footer {
     line-height: 2em;
     text-align: center;
 }
+
+.checkout-container {
+    max-width: 960px;
+}

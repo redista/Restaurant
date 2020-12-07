@@ -44,11 +44,68 @@
     </div>
   </nav>
 
-  <main>
+  <main class="container checkout-container">
     <input type="button" value="printcart" onclick="PrintCart()" />
     <input type="button" value="emptycart" onclick="EmptyCart()" />
-    <div id="menu">
-    </div>
+    <div class="row">    
+      <div class="col-md-4 order-md-2 mb-4">
+        <h2 class="align-items-center mb-3">Your Order</h2>
+        <ul id="order-list" class="list-group mb-3"></ul>
+      </div>
+      <div class="col-md-8 order-md-1"> 
+        <form name="paymentdetails" id="pdetails" action="" method="get">
+              <fieldset>
+                  <legend>Delivery Details</legend>
+                  <div class="form-group">
+                      <label for="getFirstName">First name</label>
+                      <input type="text" class="form-control" id="getFirstName" name="firstname" value="firstname" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="getLastName">Last name</label> 
+                      <input type="text" class="form-control" id="getLastName" name="lastname" value="surname" required>
+                  </div>    
+                  <div class="form-group">
+                      <label for="getAddress1">Addresss</label> 
+                      <input type="text" class="form-control" id="getAddress1" name="address2" value="address 1" required>
+                  </div> 
+                  <div class="form-group">
+                      <label for="getAddress2">Addresss</label> 
+                      <input type="text" class="form-control" id="getAddress2" name="address2"  value="address 2"  required>
+                  </div> 
+                      <div class="form-group">
+                      <label for="getAddress3">Addresss</label> 
+                      <input type="text" class="form-control" id="getAddress3" name="address3"  value="address 3"  required>
+                  </div> 
+              </fieldset>    
+              <fieldset>
+                  <legend>Payment Details</legend>
+                  <div class="form-group">
+                      <label for="getCardName">Card Name</label> 
+                      <input type="text" class="form-control" id="getCardName" name="cardname" value="MR FIRSTNAME SURNAME" required>
+                  </div>   
+                  <div class="form-group">
+                      <label for="getCardNumber">Card Number</label> 
+                      <input type="text" class="form-control" id="getCardNumber" name="cardnumber" value="1234 5678 9102 3456" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="getCardCVC">CVC</label> 
+                      <input type="password" class="form-control" id="getCardNumber" name="cardnumber"  required>
+                  </div>
+              </fieldset>    
+              <div class="alert alert-success d-none" id="payment-success" role="alert">
+                  Thank you for your purchase. You will receive delivery details via email. Please return to our <a href="shop.html">Shopping Page</a>.
+              </div>
+              <div class="alert alert-danger d-none" id="payment-failure" role="alert">
+                There seems to be a problem with the card details you entered.
+              </div>                
+              
+              <input type='submit' class="btn btn-primary" id="buy-button" value="Buy Now">
+          </form>
+
+
+      </div> 
+  </div>   
+  
   </main>
 
   <footer id="checkout-footer" >
@@ -67,9 +124,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
-    <script src="js/menu-info.js"></script>
     <script src="js/cart.js"></script> 
-    <script src="js/menu.js"></script>
-</body>
+    <script src="js/checkout.js"></script>
+  </body>
 
 </html>
