@@ -24,7 +24,6 @@ window.onload = function() {
         for (let i = 0; i < items.length; i++)
         {
             let item = items[i];
-            console.log(item);
             // Create and set dish div
             let wrapper = document.createElement("div");
             wrapper.classList.add("menu-item", "col-sm-6");
