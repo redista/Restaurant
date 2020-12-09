@@ -1,17 +1,24 @@
 var cart = {};
 
 $(document).ready(function () {
+
     if (localStorage.getItem("cart") == null) {
         localStorage.setItem("cart", "{}" );
+        localStorage.setItem("total", 0);
+    }
+    else if (localStorage.getItem("total") == null) {
+        localStorage.setItem("total", 0);
     }
     else
     {
         cart = JSON.parse(localStorage.getItem("cart"));
-    }
+        localStorage.setItem("total", SetTotal());
+    };
 });
 
 function AddToCart(item) {
     cart = JSON.parse(localStorage.getItem("cart"));
+
 
     if (cart[item] == null) {
         let itemObj = {
@@ -24,9 +31,13 @@ function AddToCart(item) {
         cart[item].amount++;
     }
 
-    UpdateCheckoutFooter(cart[item].amount, "add");
-
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    SetTotal();
+
+    if ($("body").is(".checkout-main")) {
+        UpdateCheckout();
+    }
 }
 
 function RemoveFromCart(item) {
@@ -42,23 +53,30 @@ function RemoveFromCart(item) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    SetTotal(); 
+    
+    if ($("body").is(".checkout-main")) {
+        UpdateCheckout();
+    }
 }
 
-// TODO
-function UpdateCheckoutFooter(amount, op="none") {
-    let container = document.getElementById("price-display");
-    if(op=="none") {
-        container.innerHTML = `&euro; ${amount}`;
-    }
-    else if (op=="add")
+function SetTotal() {
+
+    let temp = JSON.parse(localStorage.getItem("cart"));
+
+    let total = 0;
+    for (let item in temp)
     {
-        let temp = Number(container.textContent);
-        temp += amount;
-        container.innerHTML = temp;
+        total += temp[item].price * temp[item].amount;
     }
-}
+    console.log(localStorage.getItem("total"));
+    localStorage.setItem("total", total);
 
+    $("#price-display").html(`&euro; ${total.toFixed(2)}`);
+}
 // TEST FUNCTIONS
+
 
 function PrintCart() {
     console.log(localStorage.getItem("cart"));

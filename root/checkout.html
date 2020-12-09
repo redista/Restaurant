@@ -17,7 +17,7 @@
   <title>Little House</title>
 </head>
 
-<body>
+<body class="checkout-main">
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,67 +40,80 @@
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a id="loginlogout" class="dropdown-item" href="#"></a>
+              <a class="dropdown-item" href="user.html">User Details</a>
+            </div>
+          </li>
       </ul>
     </div>
   </nav>
 
-  <main class="container checkout-container">
-    <input type="button" value="printcart" onclick="PrintCart()" />
-    <input type="button" value="emptycart" onclick="EmptyCart()" />
+  <main class="container details-form">
     <div class="row">    
       <div class="col-md-4 order-md-2 mb-4">
         <h2 class="align-items-center mb-3">Your Order</h2>
         <ul id="order-list" class="list-group mb-3"></ul>
       </div>
       <div class="col-md-8 order-md-1"> 
-        <form name="paymentdetails" id="pdetails" action="" method="get">
-              <fieldset>
-                  <legend>Delivery Details</legend>
-                  <div class="form-group">
-                      <label for="getFirstName">First name</label>
-                      <input type="text" class="form-control" id="getFirstName" name="firstname" value="firstname" required>
-                  </div>
-                  <div class="form-group">
-                      <label for="getLastName">Last name</label> 
-                      <input type="text" class="form-control" id="getLastName" name="lastname" value="surname" required>
-                  </div>    
-                  <div class="form-group">
-                      <label for="getAddress1">Addresss</label> 
-                      <input type="text" class="form-control" id="getAddress1" name="address2" value="address 1" required>
-                  </div> 
-                  <div class="form-group">
-                      <label for="getAddress2">Addresss</label> 
-                      <input type="text" class="form-control" id="getAddress2" name="address2"  value="address 2"  required>
-                  </div> 
-                      <div class="form-group">
-                      <label for="getAddress3">Addresss</label> 
-                      <input type="text" class="form-control" id="getAddress3" name="address3"  value="address 3"  required>
-                  </div> 
-              </fieldset>    
-              <fieldset>
-                  <legend>Payment Details</legend>
-                  <div class="form-group">
-                      <label for="getCardName">Card Name</label> 
-                      <input type="text" class="form-control" id="getCardName" name="cardname" value="MR FIRSTNAME SURNAME" required>
-                  </div>   
-                  <div class="form-group">
-                      <label for="getCardNumber">Card Number</label> 
-                      <input type="text" class="form-control" id="getCardNumber" name="cardnumber" value="1234 5678 9102 3456" required>
-                  </div>
-                  <div class="form-group">
-                      <label for="getCardCVC">CVC</label> 
-                      <input type="password" class="form-control" id="getCardNumber" name="cardnumber"  required>
-                  </div>
-              </fieldset>    
-              <div class="alert alert-success d-none" id="payment-success" role="alert">
-                  Thank you for your purchase. You will receive delivery details via email. Please return to our <a href="shop.html">Shopping Page</a>.
+        <form name="paymentdetails" id="udetails" action="" method="get">
+          <fieldset>
+              <legend>Delivery Details</legend>
+              <div class="form-group">
+                  <label for="getFirstName">First name</label>
+                  <input type="text" class="form-control" id="getFirstName" name="firstname" pattern="[a-zA-Z]+" minlength="1" maxlength="20" placeholder="firstname" required>
               </div>
-              <div class="alert alert-danger d-none" id="payment-failure" role="alert">
-                There seems to be a problem with the card details you entered.
-              </div>                
-              
-              <input type='submit' class="btn btn-primary" id="buy-button" value="Buy Now">
-          </form>
+              <div class="form-group">
+                  <label for="getLastName">Last name</label> 
+                  <input type="text" class="form-control" id="getLastName" name="lastname" pattern="[a-zA-Z]+" minlength="1" maxlength="20" placeholder="surname" required>
+              </div> 
+              <div class="form-group">
+                  <label for="getLastName">Date of birth</label> 
+                  <input type="date" class="form-control" id="getDOB" name="dob" required>
+              </div>    
+              <div class="form-group">
+                  <label for="getAddress1">Addresss</label> 
+                  <input type="text" class="form-control" id="getAddress1" name="address2" placeholder="address 1" minlength="3" maxlength="30" required>
+              </div> 
+              <div class="form-group">
+                  <label for="getAddress2">Addresss</label> 
+                  <input type="text" class="form-control" id="getAddress2" name="address2"  placeholder="address 2" minlength="3" maxlength="30" required>
+              </div> 
+                  <div class="form-group">
+                  <label for="getAddress3">Addresss</label> 
+                  <input type="text" class="form-control" id="getAddress3" name="address3"  placeholder="address 3" minlength="3" maxlength="30" required>
+              </div> 
+          </fieldset>    
+          <fieldset>
+              <legend>Payment Details</legend>
+              <div class="form-group">
+                  <label for="getCardName">Card Name</label> 
+                  <input type="text" class="form-control" id="getCardName" name="cardname" pattern placeholder="MR FIRSTNAME SURNAME" required>
+              </div>   
+              <div class="form-group">
+                  <label for="getCardNumber">Card Number</label> 
+                  <input type="number" class="form-control" id="getCardNumber" name="cardnumber" minlength="12" maxlength="12" placeholder="1234 5678 9102 3456" required>
+              </div>
+              <div class="form-group">
+                  <label for="getCardCVC">CVC</label> 
+                  <input type="password" class="form-control" id="getCardNumber" name="cardnumber" minlength="3" maxlength="3" placeholder="123" required>
+              </div>
+          </fieldset>    
+          <div class="alert alert-success d-none" id="payment-success" role="alert">
+              Thank you. Your details have been updated.</a>.
+          </div>
+          <div class="alert alert-danger d-none" id="payment-failure" role="alert">
+            There seems to be a problem with the card details you entered.
+          </div>                
+          
+          <input type='submit' class="btn btn-primary" id="buy-button" value="Order now">
+      </form>
 
 
       </div> 
@@ -125,6 +138,7 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
     <script src="js/cart.js"></script> 
+    <script src="js/menu-info.js"></script>
     <script src="js/checkout.js"></script>
   </body>
 
