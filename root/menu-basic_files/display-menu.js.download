@@ -41,7 +41,7 @@ window.onload = function() {
             let btn = document.createElement("input");
             btn.setAttribute("type", "button");
             btn.setAttribute("value", "Add to cart");
-            btn.classList.add("itembtn", "add");
+            btn.classList.add("itembtn", "btn", "add");
             btn.setAttribute("id", item.name);
 
             // Append data to dish

@@ -71,21 +71,30 @@ function RemoveFromCart(item) {
     }
 }
 
-function SetTotal() {
-    // not incredibly efficient, but works very simply
+function AddToCart(item) {
+    cart = JSON.parse(localStorage.getItem("cart"));
 
-    let temp = JSON.parse(localStorage.getItem("cart"));
-    // get total from temp cart obj
-    let total = 0;
-    for (let item in temp)
-    {
-        total += temp[item].price * temp[item].amount;
+    // If the cart item doesn't exist, make it, then append
+    if (cart[item] == null) {
+        let itemObj = {
+            amount : 1,
+            // get the price from the menu_info obj
+            price : menu_info[item].price
+        }
+        cart[item] = itemObj;
     }
-    // set total
-    localStorage.setItem("total", total);
+    // if it does exist, increase the amount
+    else {
+        cart[item].amount++;
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-    // update the basket total display
-    $("#price-display").html(`&euro; ${total.toFixed(2)}`);
+    // set th localstorage total price
+    SetTotal();
+
+    if ($("body").is(".checkout-main")) {
+        UpdateCheckout();
+    }
 }
 
 // TEST FUNCTIONS

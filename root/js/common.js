@@ -9,6 +9,7 @@ $(document).ready(function () {
     if (localStorage.getItem("cart") === null) {
         localStorage.setItem("cart", "{}");
         localStorage.setItem("total", 0);
+        localStorage.setItem("items", 0);
     }
     // If only the total is null, make it 0
     else if (localStorage.getItem("total") === null) {
@@ -76,7 +77,7 @@ $(document).ready(function () {
         }
         return false;
     });
-    
+
     // If the user has no details, assign empty strings to it
     if (localStorage.getItem('userdetails') == null) {
         console.log(1);
@@ -103,7 +104,7 @@ $(document).ready(function () {
         // if the user updates the user details - we update the userDetails javascript object
         userDetails.firstName = $('input[name="firstname"]').val();
         userDetails.lastName = $('input[name="lastname"]').val();
-        userDetails.dob = $('input[name="dob"]').val(userDetails.dob);
+        userDetails.dob = $('input[name="dob"]').val().toString();
         userDetails.address1 = $('input[name="address1"]').val();
         userDetails.address2 = $('input[name="address2"]').val();
         userDetails.address3 = $('input[name="address3"]').val();
@@ -115,7 +116,7 @@ $(document).ready(function () {
     // Get payment result depending on card number
     $('form[name="paymentdetails"]').submit(function (event) {
         var cardnumber = $('input[name="cardnumber"]').val();
-        if (cardnumber == "1234 5678 9102 3456") {
+        if (cardnumber == "1234567890123456") {
             $("#payment-failure").addClass("d-none");
             $("#payment-success").removeClass("d-none");
             $("#buy-button").addClass("d-none");
@@ -133,7 +134,7 @@ function UpdateCheckout() {
     if ($("#order-list").length > 0) {
         $("#order-list").html("");
     };
-    
+
     let container = document.getElementById("order-list");
 
     let temp = JSON.parse(localStorage.getItem("cart"));
@@ -154,10 +155,6 @@ function UpdateCheckout() {
         itemContainer.innerHTML = `<div>${title}${btnDiv}<span style="display:block;">&euro; ${price.toFixed(2)}</span></div>`;
         container.appendChild(itemContainer);
 
-        $(`#${item}`).click((e) => {
-
-        });
-
         total += price;
     }
 
@@ -173,9 +170,9 @@ function AddToCart(item) {
     // If the cart item doesn't exist, make it, then append
     if (cart[item] == null) {
         let itemObj = {
-            amount : 1,
+            amount: 1,
             // get the price from the menu_info obj
-            price : menu_info[item].price
+            price: menu_info[item].price
         }
         cart[item] = itemObj;
     }
@@ -183,7 +180,6 @@ function AddToCart(item) {
     else {
         cart[item].amount++;
     }
-
     localStorage.setItem("cart", JSON.stringify(cart));
 
     // set th localstorage total price
@@ -212,8 +208,8 @@ function RemoveFromCart(item) {
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    SetTotal(); 
-    
+    SetTotal();
+
     if ($("body").is(".checkout-main")) {
         UpdateCheckout();
     }
@@ -226,14 +222,18 @@ function SetTotal() {
 
     // get total from temp cart obj
     let total = 0;
-    for (let item in temp)
-    {
-        console.log(temp.length);
+    let items = 0;
+    for (let item in temp) {
         total += temp[item].price * temp[item].amount;
+        items += temp[item].amount;
     }
     // set total
+    localStorage.setItem("items", items);
     localStorage.setItem("total", total);
 
     // update the basket total display
-    $("#price-display").html(`&euro; ${total.toFixed(2)}`);
+    if ($("body").is(".menu") || ".userdetails") {
+        $("#items-display").html(items);
+        $("#price-display").html(`&euro; ${total.toFixed(2)}`);
+    }
 }

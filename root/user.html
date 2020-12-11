@@ -61,11 +61,11 @@
                   <legend>Delivery Details</legend>
                   <div class="form-group">
                       <label for="getFirstName">First name</label>
-                      <input type="text" class="form-control" id="getFirstName" name="firstname" pattern="[a-zA-Z]+" minlength="1" maxlength="20" placeholder="firstname" required>
+                      <input type="text" class="form-control" id="getFirstName" name="firstname" pattern="[a-zA-Z]+" maxlength="20" placeholder="firstname" required>
                   </div>
                   <div class="form-group">
                       <label for="getLastName">Last name</label> 
-                      <input type="text" class="form-control" id="getLastName" name="lastname" pattern="[a-zA-Z]+" minlength="1" maxlength="20" placeholder="surname" required>
+                      <input type="text" class="form-control" id="getLastName" name="lastname" pattern="[a-zA-Z]+" maxlength="20" placeholder="surname" required>
                   </div> 
                   <div class="form-group">
                       <label for="getLastName">Date of birth</label> 
@@ -73,31 +73,31 @@
                   </div>    
                   <div class="form-group">
                       <label for="getAddress1">Addresss</label> 
-                      <input type="text" class="form-control" id="getAddress1" name="address2" placeholder="address 1" required>
+                      <input type="text" class="form-control" id="getAddress1" name="address2" maxlength="40" placeholder="address 1" required>
                   </div> 
                   <div class="form-group">
                       <label for="getAddress2">Addresss</label> 
-                      <input type="text" class="form-control" id="getAddress2" name="address2"  placeholder="address 2"  required>
+                      <input type="text" class="form-control" id="getAddress2" name="address2" maxlength="40"  placeholder="address 2"  required>
                   </div> 
                       <div class="form-group">
                       <label for="getAddress3">Addresss</label> 
-                      <input type="text" class="form-control" id="getAddress3" name="address3"  placeholder="address 3"  required>
+                      <input type="text" class="form-control" id="getAddress3" name="address3" maxlength="40"  placeholder="address 3"  required>
                   </div> 
               </fieldset>    
               <fieldset>
                   <legend>Payment Details</legend>
                   <div class="form-group">
-                      <label for="getCardName">Card Name</label> 
-                      <input type="text" class="form-control" id="getCardName" name="cardname" placeholder="MR FIRSTNAME SURNAME" required>
-                  </div>   
-                  <div class="form-group">
-                      <label for="getCardNumber">Card Number</label> 
-                      <input type="text" class="form-control" id="getCardNumber" name="cardnumber" placeholder="1234 5678 9102 3456" required>
-                  </div>
-                  <div class="form-group">
-                      <label for="getCardCVC">CVC</label> 
-                      <input type="password" class="form-control" id="getCardNumber" name="cardnumber"  required>
-                  </div>
+                    <label for="getCardName">Card Name</label> 
+                    <input type="text" class="form-control" id="getCardName" name="cardname" minlength="3" maxlength="40" placeholder="MR FIRSTNAME SURNAME" required>
+                </div>   
+                <div class="form-group">
+                    <label for="getCardNumber">Card Number</label> 
+                    <input type="text" class="form-control" id="getCardNumber" name="cardnumber" maxlength="16" pattern="[0-9]{16}" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="getCardCVC">CVC</label> 
+                    <input type="password" class="form-control" id="getCardNumber" name="cardnumber" maxlength="3" pattern="[0-9]{3}" placeholder="123" required>
+                </div>
               </fieldset>    
               <div class="alert alert-success d-none" id="payment-success" role="alert">
                   Thank you. Your details have been updated.</a>.
@@ -116,14 +116,12 @@
   </main>
 
   <footer id="checkout-footer" >
-    <div id="checkout-wrapper">
-      <div id="checkout-info">
-      <img id="checkout-icon" src="img/basket-icon.png" alt="checkout basket" />
-      <p id="price-display">&euro; 0.00</p>
-    </div>
-      <a id="checkout-link" href="checkout.html">Checkout</a>
-    </div>
-  </footer>
+    <p>Items : <span id="items-display"></span></p>
+
+    <p>Total : <span id="price-display"></span></p>
+
+      <a class="footer-wrapper" id="checkout-link" href="checkout.html">Checkout</a>
+</footer>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
