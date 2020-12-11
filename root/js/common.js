@@ -90,16 +90,14 @@ $(document).ready(function () {
     // If on the checkout page (udetails form) or 
     // user page (also udetails form) then add the saved info
     // from the localStorage to the form
-    // if ($('#udetails').length > 0) {
-    //     $('input[name="firstname"]').val(userDetails.firstName);
-    //     $('input[name="lastname"]').val(userDetails.lastName);
-    //     $('input[name="dob"]').val(userDetails.dob);
-    //     $('input[name="address1"]').val(userDetails.address1);
-    //     $('input[name="address2"]').val(userDetails.address2);
-    //     $('input[name="address3"]').val(userDetails.address3);
-    //     console.log(userDetails);
-    //     console.log(userDetails.address3);
-    // };
+    if ($('#udetails').length > 0) {
+        $('input[name="firstname"]').val(userDetails.firstName);
+        $('input[name="lastname"]').val(userDetails.lastName);
+        $('input[name="dob"]').val(userDetails.dob);
+        $('input[name="address1"]').val(userDetails.address1);
+        $('input[name="address2"]').val(userDetails.address2);
+        $('input[name="address3"]').val(userDetails.address3);
+    };
 
     // wait for submit button to be clicked on userdetails update form
     $('form[name="userdetails"]').submit(function (event) {
