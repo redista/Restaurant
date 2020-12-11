@@ -75,7 +75,6 @@ function SetTotal() {
     // not incredibly efficient, but works very simply
 
     let temp = JSON.parse(localStorage.getItem("cart"));
-
     // get total from temp cart obj
     let total = 0;
     for (let item in temp)
