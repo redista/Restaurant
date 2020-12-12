@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/main.css">
 
-  <title>Little House</title>
+  <title>Casa Italiana</title>
 </head>
 
 <body class="checkout-main">
@@ -93,11 +93,11 @@
             </div>   
             <div class="form-group">
                 <label for="getCardNumber">Card Number</label> 
-                <input type="text" class="form-control" id="getCardNumber" name="cardnumber" value="1234 5678 9102 3456" required>
+                <input type="text" class="form-control" id="getCardNumber" name="cardnumber" pattern="[0-9]{16}" placeholder="1234567890123456" required>
             </div>
             <div class="form-group">
                 <label for="getCardCVC">CVC</label> 
-                <input type="password" class="form-control" id="getCardNumber" name="cardnumber"  required>
+                <input type="password" class="form-control" id="getCardNumber" name="cardnumber" pattern="[0-9]{3}" placeholder="123"  required>
             </div>
           </fieldset>    
           <div class="alert alert-success d-none" id="payment-success" role="alert">
@@ -123,7 +123,7 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
     <script src="js/menu-info.js"></script>
-    <script src="js/common.js"></script>
+    <script src="js/common.min.js"></script>
   </body>
 
 </html>

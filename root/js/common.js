@@ -13,6 +13,7 @@ $(document).ready(function () {
     }
     // If only the total is null, make it 0
     else if (localStorage.getItem("total") === null) {
+        localStorage.setItem("items", 0);
         localStorage.setItem("total", 0);
     }
     else {
@@ -42,6 +43,7 @@ $(document).ready(function () {
     });
 
     // Display the cart total in the footer
+    $("#items-display").html(`${parseInt(localStorage.getItem("items"))}`);
     $("#price-display").html(`&euro; ${parseInt(localStorage.getItem("total")).toFixed(2)}`);
 
 
@@ -97,6 +99,9 @@ $(document).ready(function () {
         $('input[name="address1"]').val(userDetails.address1);
         $('input[name="address2"]').val(userDetails.address2);
         $('input[name="address3"]').val(userDetails.address3);
+        $('input[name="cardname"]').val(userDetails.cardName);
+        $('input[name="cardnumber"]').val(userDetails.cardNo);
+        $('input[name="cardcvc"]').val(userDetails.cardCVC);
     };
 
     // wait for submit button to be clicked on userdetails update form
@@ -108,6 +113,9 @@ $(document).ready(function () {
         userDetails.address1 = $('input[name="address1"]').val();
         userDetails.address2 = $('input[name="address2"]').val();
         userDetails.address3 = $('input[name="address3"]').val();
+        userDetails.cardName = $('input[name="cardname"]').val();
+        userDetails.cardNo = $('input[name="cardnumber"]').val();
+        userDetails.cardCVC = $('input[name="cardcvc"]').val();
         // finally we convert the javascript object to a string with JSON.stringify and save it to localstorage
         localStorage.setItem('userdetails', JSON.stringify(userDetails));
         return false;
@@ -232,7 +240,7 @@ function SetTotal() {
     localStorage.setItem("total", total);
 
     // update the basket total display
-    if ($("body").is(".menu") || ".userdetails") {
+    if ($("#checkout-footer").length > 0) {
         $("#items-display").html(items);
         $("#price-display").html(`&euro; ${total.toFixed(2)}`);
     }
