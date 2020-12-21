@@ -99,6 +99,7 @@ footer p, footer a {
   max-width: 960px;
   width: 90%;
   margin: auto;
+  margin-top: 1em;
 }
 
 .checkout-item {
